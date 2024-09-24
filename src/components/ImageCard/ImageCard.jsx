@@ -1,9 +1,12 @@
 import s from "./ImageCard.module.css";
 
-const ImageCard = ({ name: { urls, description } }) => {
+const ImageCard = ({ alt, src, author, location }) => {
   return (
     <div>
-      <img className={s.imgCard} src={urls.small} alt={description} />
+      <img className={s.imgCard} src={src} alt={alt} />
+      <span className={s.imgTitle}>
+        Author: {author} {location}
+      </span>
     </div>
   );
 };

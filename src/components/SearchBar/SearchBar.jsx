@@ -1,4 +1,5 @@
 import { Field, Form, Formik } from "formik";
+import toast, { Toaster } from "react-hot-toast";
 import { AiOutlineSearch } from "react-icons/ai";
 import s from "./SearchBar.module.css";
 
@@ -7,8 +8,19 @@ const SearchBar = ({ setQuery }) => {
     query: "",
   };
   const handleSubmit = (values) => {
-    console.log(values);
+    if (!values.query) {
+      toast.error("You must enter text to search for images");
+      return;
+    }
     setQuery(values.query);
+  };
+
+  const toastOptions = {
+    duration: 5000,
+    style: {
+      background: "#A52A2A",
+      color: "#fff",
+    },
   };
 
   return (
@@ -24,8 +36,9 @@ const SearchBar = ({ setQuery }) => {
             placeholder="Search images and photos"
           />
           <button className={s.button} type="submit">
-            <AiOutlineSearch size="20" />
+            <AiOutlineSearch size="30" />
           </button>
+          <Toaster containerStyle={{ top: 60 }} toastOptions={toastOptions} />
         </div>
       </Form>
     </Formik>
@@ -33,3 +46,7 @@ const SearchBar = ({ setQuery }) => {
 };
 
 export default SearchBar;
+
+// <span className={s.clean} onClick={handleClick}>
+//   &times;
+// </span>;

@@ -14,7 +14,6 @@ const Loader = () => {
         wrapperClass="magnifying-glass-wrapper"
         glassColor="#c0efff"
         color="#e15b64"
-        //  "#4fa94d"
       />
     </div>
   );
